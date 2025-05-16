@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<ruleset name="AcmeWidgetCo">
+    <description>Coding standards for Acme Widget Co</description>
+
+    <file>src</file>
+    <file>tests</file>
+
+    <arg name="basepath" value="."/>
+    <arg name="cache" value=".phpcs.cache"/>
+    <arg name="colors"/>
+    <arg name="extensions" value="php"/>
+    <arg name="parallel" value="8"/>
+
+    <!-- PSR-12 standard -->
+    <rule ref="PSR12">
+        <exclude name="PSR12.Files.FileHeader.SpacingAfterBlock"/>
+    </rule>
+
+    <!-- Additional rules -->
+    <rule ref="Generic.Arrays.DisallowLongArraySyntax"/>
+    <rule ref="Generic.Formatting.DisallowMultipleStatements"/>
+    <rule ref="Generic.NamingConventions.UpperCaseConstantName"/>
+    <rule ref="Generic.PHP.LowerCaseConstant"/>
+    <rule ref="Generic.PHP.LowerCaseKeyword"/>
+    <rule ref="Generic.PHP.NoSilencedErrors"/>
+    <rule ref="Generic.WhiteSpace.ScopeIndent"/>
+    <rule ref="Squiz.Operators.ComparisonOperatorUsage"/>
+    <rule ref="Squiz.Operators.ValidLogicalOperators"/>
+    <rule ref="Squiz.Strings.DoubleQuoteUsage"/>
+    <rule ref="Squiz.WhiteSpace.SuperfluousWhitespace"/>
+</ruleset>

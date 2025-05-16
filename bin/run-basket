@@ -1,0 +1,25 @@
+#!/usr/bin/env php
+<?php
+
+require_once __DIR__.'/../vendor/autoload.php';
+
+use Acme\Basket\ShoppingBasket;
+use Acme\Basket\Delivery\StandardDeliveryCalculator;
+use Acme\Basket\Offers\RedWidgetSecondHalfPriceOffer;
+
+
+$productCatalogue = [
+    ['code' => 'R01', 'name' => 'Red Widget', 'price' => 32.95],
+    ['code' => 'G01', 'name' => 'Green Widget', 'price' => 24.95],
+    ['code' => 'B01', 'name' => 'Blue Widget', 'price' => 7.95],
+];
+
+$deliveryCalculator = new StandardDeliveryCalculator();
+$offerCalculator = new RedWidgetSecondHalfPriceOffer();
+
+$basket = new ShoppingBasket($productCatalogue, $deliveryCalculator, $offerCalculator);
+
+$basket->add('R01');
+$basket->add('G01');
+
+echo 'Total: ' . $basket->total() . PHP_EOL; // Returns 60.85

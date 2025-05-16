@@ -1,0 +1,21 @@
+# Ignore version control & IDE files
+.git/
+.idea/
+.vscode/
+
+# Ignore dependency directories (they should be installed inside the container)
+vendor/
+node_modules/
+
+# Ignore environment/config files (use Docker secrets or build args instead)
+.env
+docker-compose.override.yml
+
+# Ignore logs & caches
+storage/logs/
+.phpunit.cache/
+*.log
+
+# Ignore local uploads/temp files
+public/storage/
+tmp/

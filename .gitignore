@@ -1,0 +1,38 @@
+###> app ###
+/vendor/
+###> app ###
+
+###> phpunit/phpunit ###
+/.phpunit.cache/
+/phpunit.xml
+.phpunit.result.cache
+###< phpunit/phpunit ###
+
+###> PHPEditor ###
+.idea/
+###< VSPHPEditorCode ###
+
+###> VSCode ###
+.vscode/
+###< VSCode ###
+
+###> Tests Coverage ###
+build
+coverage-html
+###< Tests Coverage ###
+
+###> squizlabs/php_codesniffer ###
+.phpcs.cache
+/.phpcs-cache
+/phpcs.xml
+###< squizlabs/php_codesniffer ###
+
+###> friendsofphp/php-cs-fixer ###
+/.php-cs-fixer.php
+/.php-cs-fixer.cache
+###< friendsofphp/php-cs-fixer ###
+
+###> phpstan/phpstan ###
+phpstan.neon
+phpstan.cache
+###< phpstan/phpstan ###

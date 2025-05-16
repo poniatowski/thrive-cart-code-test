@@ -71,20 +71,7 @@ final class ShoppingBasket implements BasketInterface
         $this->productCatalogue = [];
 
         foreach ($products as $product) {
-            if (is_array($product)) {
-                // Convert float price to Money object (assuming price is in dollars)
-                $price = is_float($product['price'])
-                    ? Money::USD((int) round($product['price'] * 100))
-                    : $product['price'];
-
-                $this->productCatalogue[$product['code']] = new Product(
-                    $product['code'],
-                    $product['name'],
-                    $price
-                );
-            } elseif ($product instanceof Product) {
-                $this->productCatalogue[$product->code] = $product;
-            }
+             $this->productCatalogue[$product->code] = $product;
         }
     }
 }

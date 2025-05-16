@@ -17,7 +17,7 @@ class RedWidgetSecondHalfPriceOfferTest extends TestCase
     protected function setUp(): void
     {
         $this->offerCalculator = new RedWidgetSecondHalfPriceOffer();
-        
+
         $this->productCatalogue = [
             'R01' => new Product('R01', 'Red Widget', Money::USD(3295)), // $32.95
             'G01' => new Product('G01', 'Green Widget', Money::USD(2495)), // $24.95
@@ -57,7 +57,7 @@ class RedWidgetSecondHalfPriceOfferTest extends TestCase
     {
         $items = ['R01' => 4];
         $discount = $this->offerCalculator->calculateDiscount($items, $this->productCatalogue);
-        
+
         // For 4 red widgets, should get 2 discounts (floor(4/2) = 2)
         // Each discount is $32.95 / 2 = $16.475 → $16.48 when rounded
         // Total discount = 2 × $16.48 = $32.96

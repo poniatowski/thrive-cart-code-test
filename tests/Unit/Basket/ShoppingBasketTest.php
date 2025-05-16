@@ -25,7 +25,7 @@ final class ShoppingBasketTest extends TestCase
     protected function setUp(): void
     {
         $this->currency = new Currency('USD');
-        
+
         $this->productCatalogue = [
             'R01' => new Product('R01', 'Red Widget', Money::USD(3295)), // $32.95
             'G01' => new Product('G01', 'Green Widget', Money::USD(2495)), // $24.95
@@ -45,7 +45,7 @@ final class ShoppingBasketTest extends TestCase
     public function testAddProduct(): void
     {
         $this->basket->add('R01');
-        
+
         // $32.95 (product) + $4.95 (delivery) = $37.90
         $this->assertEquals(37.90, $this->basket->total());
     }
@@ -54,7 +54,7 @@ final class ShoppingBasketTest extends TestCase
     {
         $this->basket->add('R01');
         $this->basket->add('R01');
-        
+
         // ($32.95 + $16.48 discount) = $49.43 + $2.95 delivery = $52.38
         // Note: MoneyPHP handles the precise half calculation
         $this->assertEquals(54.37, $this->basket->total());
@@ -64,7 +64,7 @@ final class ShoppingBasketTest extends TestCase
     {
         $this->basket->add('R01');
         $this->basket->add('G01');
-        
+
         // $32.95 + $24.95 = $57.90 + $2.95 delivery = $60.85
         $this->assertEquals(60.85, $this->basket->total());
     }
@@ -76,7 +76,7 @@ final class ShoppingBasketTest extends TestCase
         $this->basket->add('R01');
         $this->basket->add('R01');
         $this->basket->add('R01');
-        
+
         // Calculation:
         // B01: $7.95 × 2 = $15.90
         // R01: $32.95 × 3 = $98.85

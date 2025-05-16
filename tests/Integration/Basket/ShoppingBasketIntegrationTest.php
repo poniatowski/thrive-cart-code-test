@@ -70,7 +70,7 @@ class ShoppingBasketIntegrationTest extends TestCase
         $this->basket->add('R01');
         $this->basket->add('R01');
         $this->basket->add('R01');
-        
+
         // Calculation:
         // B01: $7.95 × 2 = $15.90
         // R01: $32.95 × 3 = $98.85
@@ -86,7 +86,7 @@ class ShoppingBasketIntegrationTest extends TestCase
         $this->basket->add('R01');
         $this->basket->add('G01');
         $this->basket->add('G01');
-        
+
         // Calculation:
         // R01: 2 × $32.95 = $65.90
         // Discount: 1 × $16.48 = $16.48
@@ -107,12 +107,12 @@ class ShoppingBasketIntegrationTest extends TestCase
         $this->basket->add('R01');
         $this->basket->add('R01');
         $this->basket->add('R01');
-        
+
         $reflection = new \ReflectionClass($this->basket);
         $property = $reflection->getProperty('items');
         $property->setAccessible(true);
         $items = $property->getValue($this->basket);
-        
+
         $this->assertEquals(3, $items['R01']);
     }
 }

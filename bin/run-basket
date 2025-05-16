@@ -6,12 +6,13 @@ require_once __DIR__.'/../vendor/autoload.php';
 use Acme\Basket\ShoppingBasket;
 use Acme\Basket\Delivery\StandardDeliveryCalculator;
 use Acme\Basket\Offers\RedWidgetSecondHalfPriceOffer;
-
+use Acme\Basket\ValueObjects\Product;
+use Money\Money;
 
 $productCatalogue = [
-    ['code' => 'R01', 'name' => 'Red Widget', 'price' => 32.95],
-    ['code' => 'G01', 'name' => 'Green Widget', 'price' => 24.95],
-    ['code' => 'B01', 'name' => 'Blue Widget', 'price' => 7.95],
+    'R01' => new Product('R01', 'Red Widget', Money::USD(3295)), // $32.95
+    'G01' => new Product('G01', 'Green Widget', Money::USD(2495)), // $24.95
+    'B01' => new Product('B01', 'Blue Widget', Money::USD(795)),    // $7.95
 ];
 
 $deliveryCalculator = new StandardDeliveryCalculator();

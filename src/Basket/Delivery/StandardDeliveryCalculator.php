@@ -18,11 +18,11 @@ class StandardDeliveryCalculator implements DeliveryCalculatorInterface
         if ($amount->greaterThanOrEqual(Money::USD(9000))) {
             return Money::USD(0);
         }
-        
+
         if ($amount->greaterThanOrEqual(Money::USD(5000))) {
             return Money::USD(295);
         }
-        
+
         return Money::USD(495);
     }
 }

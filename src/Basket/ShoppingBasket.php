@@ -8,8 +8,8 @@ use Acme\Basket\Contracts\BasketInterface;
 use Acme\Basket\Contracts\DeliveryCalculatorInterface;
 use Acme\Basket\Contracts\OfferCalculatorInterface;
 use Acme\Basket\ValueObjects\Product;
-use Money\Money;
 use Money\Currency;
+use Money\Money;
 
 final class ShoppingBasket implements BasketInterface
 {
@@ -41,7 +41,7 @@ final class ShoppingBasket implements BasketInterface
     }
     private function calculateSubtotal(): Money
     {
-        $total = Money::USD(0);
+        $total = new Money(0, $this->currency);
 
         foreach ($this->items as $productCode => $quantity) {
             $product = $this->productCatalogue[$productCode];
@@ -58,13 +58,11 @@ final class ShoppingBasket implements BasketInterface
         }
 
         $subtotal = $this->calculateSubtotal();
-        $discount = $this->offerCalculator->calculateDiscount($this->items, $this->productCatalogue);
+        $discount = $this->offerCalculator->calculateDiscount($this->items, $this->productCatalogue, $this->currency);
         $delivery = $this->deliveryCalculator->calculate($subtotal->subtract($discount));
 
         return $subtotal->subtract($discount)->add($delivery)->getAmount() / 100;
     }
-
-    /** @param array<array{code: string, name: string, price: float}> $products */
 
     private function initializeProductCatalogue(array $products): void
     {

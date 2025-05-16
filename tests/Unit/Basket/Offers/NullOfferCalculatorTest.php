@@ -32,12 +32,12 @@ class NullOfferCalculatorTest extends TestCase
     public function testAlwaysReturnsZeroDiscount(): void
     {
         $items = ['PROD1' => 2, 'PROD2' => 1];
-        
+
         $products = [
             'PROD1' => new Product('PROD1', 'Prod 1', new Money(1000, $this->currency)),
             'PROD2' => new Product('PROD1', 'Prod 1', new Money(500, $this->currency)),
         ];
-        
+
         $result = $this->calculator->calculateDiscount(
             $items,
             $products,
@@ -64,7 +64,7 @@ class NullOfferCalculatorTest extends TestCase
         $eur = new Currency('EUR');
         $result = $this->calculator->calculateDiscount(
             ['PROD1' => 1],
-            ['PROD1' => $this->createMockProduct(1000)],
+            ['PROD1' => new Product('PROD1', 'Prod 1', new Money(1000, $this->currency))],
             $eur
         );
 
@@ -76,7 +76,7 @@ class NullOfferCalculatorTest extends TestCase
     {
         $result1 = $this->calculator->calculateDiscount(
             ['PROD1' => 1],
-            ['PROD1' => $this->createMockProduct(1000)], // Valid product
+            ['PROD1' => new Product('PROD1', 'Prod 1', new Money(1000, $this->currency))],
             $this->currency
         );
 
@@ -88,18 +88,5 @@ class NullOfferCalculatorTest extends TestCase
 
         $this->assertEquals(0, $result1->getAmount());
         $this->assertEquals(0, $result2->getAmount());
-    }
-
-    private function createMockProduct(int $priceInCents): object
-    {
-        return new class ($priceInCents) {
-            public function __construct(private int $price)
-            {
-            }
-            public function price(): Money
-            {
-                return new Money($this->price, new Currency('USD'));
-            }
-        };
     }
 }

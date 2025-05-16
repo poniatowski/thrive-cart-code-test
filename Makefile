@@ -1,6 +1,6 @@
 .PHONY: test stan cs fix help test-phpunit test-coverage all build up down bash debug setup
 
-COMPOSE := $(DOCKER_BUILD_VARS) docker-compose
+COMPOSE := docker-compose
 
 help:
 	@echo "Available targets:"

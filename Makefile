@@ -20,7 +20,7 @@ help:
 build:
 	${COMPOSE} build --no-cache
 
-setup: build up
+setup: build
 	${COMPOSE} run --rm app composer install
 
 up:

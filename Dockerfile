@@ -37,4 +37,4 @@ RUN composer dump-autoload --optimize
 # Set permissions for CLI tool
 RUN chmod +x bin/run-basket
 
-CMD ["tail", "-f", "/dev/null"]  # Keep container running
+CMD ["sh", "-c", "tail -f /dev/null"]
